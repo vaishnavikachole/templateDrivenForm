@@ -1,0 +1,32 @@
+<div class="container">
+  <h3>Template Driven Form</h3><br>
+
+  <form>
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input required type="text" id="firstname" class="form-control" minlength="5" maxlength="20"
+      pattern="^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)" ngModel name="firstname" #fname="ngModel" (click)="showValue(fname)" autocomplete="off">
+      <div class="alert alert-danger" *ngIf="!fname.valid && fname.touched">
+        <div *ngIf="fname.errors?.['required']">
+          please fill first name....
+        </div>
+        <div *ngIf="fname.errors?.['minlength']">
+          minlength error
+        </div>
+        <div *ngIf="fname.errors?.['pattern']">
+          pattern error
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="password" class="form-control" ngModel name="password"
+      #pass="ngModel" (click)="showValue(pass)">
+    </div><br>
+    <div>
+      <input type="submit" name="submit" class="btn btn-success">
+    </div>
+  </form>
+</div>
+
